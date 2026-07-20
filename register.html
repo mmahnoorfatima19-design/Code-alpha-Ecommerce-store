@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - CodeAlpha Store</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header class="about-page-header">
+        <nav class="main-bar">
+            <div class="logo">Paucek & Lage Alpha</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/shop">Shop</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/login">Login</a></li>
+                <li><a href="/register" style="color: white; font-weight: bold;">Register</a></li>
+            </ul>
+            <input type="text" oninput="performSearch(this.value)" placeholder="Search products...">
+            <a href="/cart" style="position:relative; color: #000;">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span id="cart-count" style="position:absolute; top:-10px; right:-10px; background:red; color:white; border-radius:50%; padding:2px 6px; font-size:10px;">0</span>
+            </a>
+        </nav>
+    </header>
+
+    <!-- Registration Form -->
+    <div class="login-wrapper" style="max-width: 400px; margin: 80px auto; padding: 40px; background-color: #fff; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); text-align: center;">
+        <h2 style="margin-bottom: 25px; color: #333;">Create Account</h2>
+        <form id="register-form">
+            <input type="email" id="email" placeholder="Email Address" required style="width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;">
+            <input type="password" id="password" placeholder="Create Password" required style="width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;">
+            <button type="submit" style="width: 100%; padding: 12px; background-color: #000; color: #fff; border: none; border-radius: 8px; font-size: 16px; cursor: pointer;">Register</button>
+        </form>
+        <p style="margin-top: 20px; font-size: 14px;">Already have an account? <a href="/login" style="color: blue; text-decoration: none;">Login</a></p>
+    </div>
+
+    <!-- Footer -->
+    
+    <footer class="footer">
+    <!-- Newsletter Section -->
+    <div class="newsletter">
+        <div>
+            <h2>Join Paucek & Lage Alpha</h2>
+            <p>Get 15% off your first order, plus early access to new drops.</p>
+        </div>
+        <form id="subscribe-form" class="sub-form">
+    <!-- Yahan id="sub-email" add karna zaroori hai -->
+    <input type="email" id="sub-email" placeholder="Enter your email" required>
+    <button type="submit">Subscribe</button>
+</form>
+    </div>
+
+    <!-- Main Footer Links -->
+    <div class="footer-main">
+        <div class="brand">
+            <div class="logo">Stride</div>
+            <p>Elevate Your Style. From Head to Toe.</p>
+            <div class="socials">
+                <!-- Add your social icons here -->
+                <span>IG</span> <span>FB</span> <span>TT</span>
+            </div>
+        </div>
+
+        <div class="footer-links">
+            <h3>Shop</h3>
+            <a href="#">All Apparel</a><a href="#">Footwear</a><a href="#">Accessories</a>
+        </div>
+        <div class="footer-links">
+            <h3>Help</h3>
+            <a href="#">FAQ</a><a href="#">Shipping</a><a href="#">Contact Us</a>
+        </div>
+        <div class="footer-links">
+            <h3>About</h3>
+            <a href="#">Our Story</a><a href="#">Careers</a><a href="#">Store Locator</a>
+        </div>
+    </div>
+
+    <!-- Bottom Bar -->
+   <div class="footer-bottom">
+    <p>© 2026 CodeAlpha. All rights reserved.</p>
+    
+    <div class="payments">
+        <i class="fab fa-cc-visa" title="Visa"></i>
+        <i class="fab fa-cc-amex" title="Amex"></i>
+        <i class="fab fa-cc-apple-pay" title="Apple Pay"></i>
+    </div>
+</div>
+</footer>
+    
+
+
+    <script>
+        document.getElementById('register-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const response = await fetch('/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password })
+            });
+            const data = await response.json();
+            alert(data.message);
+        });
+    </script>
+    <script src="/script.js"></script>
+</body>
+</html>

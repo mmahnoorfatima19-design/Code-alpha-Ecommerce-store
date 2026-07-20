@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Paucek & Lage Alpha</title>
+    
+    <!-- CSS File Link -->
+    <link rel="stylesheet" href="/style.css">
+    
+    <!-- Font Awesome (Icons ke liye - Yeh zaroori hai!) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+        body { font-family: sans-serif; padding: 40px; }
+        .cart-item { display: flex; align-items: center; border-bottom: 1px solid #ddd; padding: 10px 0; }
+        .cart-item img { width: 80px; margin-right: 20px; }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navbar Section -->
+   <header class="about-page-header">
+    <nav class="main-bar">
+        <div class="logo">Paucek & Lage Alpha</div>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+             <li><a href="/shop">Shop</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/login">Login</a></li>
+        <li><a href="/register" style="color: white;">Register</a></li>
+
+        </ul>
+      <!-- Search Input (Live Search) -->
+<input type="text" oninput="performSearch(this.value)" placeholder="Search products...">
+
+<!-- Cart Icon with Badge -->
+<a href="/cart" style="position:relative;">
+    <i class="fa-solid fa-cart-shopping"></i>
+    <span id="cart-count" style="position:absolute; top:-10px; right:-10px; background:red; color:white; border-radius:50%; padding:2px 6px; font-size:10px;">0</span>
+</a>
+
+    </nav>
+
+</header>
+<h1>Your Shopping Cart</h1>
+    <div id="cart-items"></div>
+    <h2 id="total-price">Total: $0</h2>
+    <button onclick="window.location.href='/shop'">Continue Shopping</button>
+            <!-- Total price ke niche ye button code daalein -->
+<div style="margin-top: 20px;">
+    <button onclick="window.location.href='/checkout'" 
+        style="padding: 15px 30px; background-color: #021306; color: white; border: none; cursor: pointer; font-size: 18px; border-radius: 5px;">
+        Proceed to Checkout
+    </button>
+</div>
+    <script src="/script.js"></script>
+    <script>
+
+        // Cart display logic
+        function loadCart() {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let container = document.getElementById('cart-items');
+            let totalDiv = document.getElementById('total-price');
+            let total = 0;
+
+            container.innerHTML = '';
+            cart.forEach((item, index) => {
+                total += item.price;
+                container.innerHTML += `
+                    <div class="cart-item">
+                        <img src="${item.img}">
+                        <div>
+                            <h3>${item.name}</h3>
+                            <p>Price: $${item.price}</p>
+                            <button onclick="removeFromCart(${index})">Remove</button>
+                        </div>
+                    </div>
+                `;
+            });
+            totalDiv.innerText = "Total: $" + total;
+        }
+
+        window.removeFromCart = (index) => {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            loadCart();
+            updateCartCount(); // Ye function aapki script.js mein hona chahiye
+        };
+
+        loadCart();
+    </script>
+</body>
+</html>

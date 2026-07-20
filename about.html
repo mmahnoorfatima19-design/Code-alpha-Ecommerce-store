@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Paucek & Lage Alpha</title>
+    
+    <!-- CSS File Link -->
+    <link rel="stylesheet" href="/style.css">
+    
+    <!-- Font Awesome (Icons ke liye - Yeh zaroori hai!) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Header / Navbar Section -->
+   <header class="about-page-header">
+    <nav class="main-bar">
+        <div class="logo">Paucek & Lage Alpha</div>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+             <li><a href="/shop">Shop</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/login">Login</a></li>
+        <li><a href="/register" style="color: white;">Register</a></li>
+
+        </ul>
+      <!-- Search Input (Live Search) -->
+<input type="text" oninput="performSearch(this.value)" placeholder="Search products...">
+
+<!-- Cart Icon with Badge -->
+<a href="/cart" style="position:relative;">
+    <i class="fa-solid fa-cart-shopping"></i>
+    <span id="cart-count" style="position:absolute; top:-10px; right:-10px; background:red; color:white; border-radius:50%; padding:2px 6px; font-size:10px;">0</span>
+</a>
+
+    </nav>
+
+</header>
+    <!-- About Content Section -->
+   <section class="about-page">
+    <div class="story-container">
+        <h1>About Us</h1>
+        
+        <!-- Section 1 -->
+        <h2>Our Story</h2>
+        <img src="/image/a1.jpg"Our Story" style="width:100%; border-radius:8px; margin:10px 0;">
+        <p class="story-text">
+            Paucek & Lage Alpha ki shuruat ek chhote vision ke saath hui thi: logon ko quality products ghar baithe provide karna. Humne dekha ki market mein reliable cheezein milna mushkil hai, isliye humne khud ek platform banaya jahan quality aur trust ka sabse zyada khayal rakha jata hai.
+        </p>
+
+        <!-- Section 2 -->
+        <h2>Journey started from</h2>
+        <img src="/image/a2.jpg  "  journey"style="width:100%; border-radius:8px; margin:10px 0;">
+        <p class="story-text">
+            Humne 2020 mein apni journey start ki. Ek chhote se room se lekar aaj ek online platform tak, hamara safar mehnat aur customer feedback par based hai. Har saal humne apne products aur delivery system ko behtar banaya taake aap tak sirf behtareen cheez pohanche.
+        </p>
+
+        <!-- Section 3 -->
+        <h2>Our Growth (2020 - Present)</h2>
+        <p class="story-text">
+            2020 mein hamara focus sirf local products par tha, lekin ab hum apni range ko expand kar chuke hain. Humne technology aur security mein invest kiya hai taake aapki har transaction safe aur fast ho.
+        </p>
+    </div></section>
+<!-- Main Gallery Wrapper -->
+<div class="gallery-wrapper">
+    
+    <!-- Image 1 -->
+    <div class="gallery-item">
+        <img src="/image/j1.jpg" alt="Jackets">
+        <div class="overlay">
+            <a href="/shop" class="shop-now-btn">Shop Now</a>
+            <h3>JACKETS</h3>
+        </div>
+    </div>
+
+    <!-- Image 2 -->
+    <div class="gallery-item">
+        <img src="/image/j2.jpg" alt="Shoes">
+        <div class="overlay">
+            <a href="/shop" class="shop-now-btn">Shop Now</a>
+            <h3>SHOES</h3>
+        </div>
+    </div>
+
+    <!-- Image 3 -->
+    <div class="gallery-item">
+        <img src="/image/j3.jpg" alt="Watch">
+        <div class="overlay">
+            <a href="/shop" class="shop-now-btn">Shop Now</a>
+            <h3>WATCH</h3>
+        </div>
+    </div>
+
+    <!-- Image 4 -->
+    <div class="gallery-item">
+        <img src="/image/j4.jpg" alt="Bags">
+        <div class="overlay">
+            <a href="/shop" class="shop-now-btn">Shop Now</a>
+            <h3>BAGS</h3>
+        </div>
+    </div>
+
+</div>
+<!-- Features Section Container -->
+<section class="features-section">
+    <div class="features-container">
+        
+        <!-- Feature 1: Truck -->
+        <div class="feature-box">
+            <i class="fas fa-shipping-fast"></i>
+            <h3>Fast & Free Delivery</h3>
+            <p>Free delivery on all orders</p>
+        </div>
+
+        <!-- Feature 2: Credit Card -->
+        <div class="feature-box">
+            <i class="fas fa-credit-card"></i>
+            <h3>Secure Payment</h3>
+            <p>100% secure payment methods</p>
+        </div>
+
+        <!-- Feature 3: Money Back -->
+        <div class="feature-box">
+            <i class="fas fa-money-bill-wave"></i>
+            <h3>Money Back Guarantee</h3>
+            <p>30 days money back guarantee</p>
+        </div>
+
+        <!-- Feature 4: 24/7 Support -->
+        <div class="feature-box">
+            <i class="fas fa-headset"></i>
+            <h3>24/7 Support</h3>
+            <p>Dedicated customer support</p>
+        </div>
+
+    </div>
+</section>
+<!-- footer -->
+ <footer class="footer">
+    <!-- Newsletter Section -->
+    <div class="newsletter">
+        <div>
+            <h2>Join Paucek & Lage Alpha</h2>
+            <p>Get 15% off your first order, plus early access to new drops.</p>
+        </div>
+        <form id="subscribe-form" class="sub-form">
+    <!-- Yahan id="sub-email" add karna zaroori hai -->
+    <input type="email" id="sub-email" placeholder="Enter your email" required>
+    <button type="submit">Subscribe</button>
+</form>
+    </div>
+
+    <!-- Main Footer Links -->
+    <div class="footer-main">
+        <div class="brand">
+            <div class="logo">Stride</div>
+            <p>Elevate Your Style. From Head to Toe.</p>
+            <div class="socials">
+                <!-- Add your social icons here -->
+                <span>IG</span> <span>FB</span> <span>TT</span>
+            </div>
+        </div>
+
+        <div class="footer-links">
+            <h3>Shop</h3>
+            <a href="#">All Apparel</a><a href="#">Footwear</a><a href="#">Accessories</a>
+        </div>
+        <div class="footer-links">
+            <h3>Help</h3>
+            <a href="#">FAQ</a><a href="#">Shipping</a><a href="#">Contact Us</a>
+        </div>
+        <div class="footer-links">
+            <h3>About</h3>
+            <a href="#">Our Story</a><a href="#">Careers</a><a href="#">Store Locator</a>
+        </div>
+    </div>
+
+    <!-- Bottom Bar -->
+   <div class="footer-bottom">
+    <p>© 2026 CodeAlpha. All rights reserved.</p>
+    
+    <div class="payments">
+        <i class="fab fa-cc-visa" title="Visa"></i>
+        <i class="fab fa-cc-amex" title="Amex"></i>
+        <i class="fab fa-cc-apple-pay" title="Apple Pay"></i>
+    </div>
+</div>
+</footer>
+    <script src="/script.js"></script>
+</body>
+</html>

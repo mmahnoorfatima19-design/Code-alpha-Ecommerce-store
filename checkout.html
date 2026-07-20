@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeAlpha Store</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+        .checkout-container { display: flex; gap: 40px; padding: 40px; max-width: 1000px; margin: auto; }
+        .form-section, .summary-section { flex: 1; border: 1px solid #ddd; padding: 20px; border-radius: 8px; }
+        input, select { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px; }
+        .cart-item { display: flex; justify-content: space-between; margin-bottom: 10px; }
+        button { width: 100%; padding: 15px; background: #000; color: #fff; border: none; cursor: pointer; font-size: 16px; }
+    </style>
+</head>
+<body>
+ <!-- Header / Navbar Section -->
+   <header class="about-page-header">
+    <nav class="main-bar">
+        <div class="logo">Paucek & Lage Alpha</div>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+             <li><a href="/shop">Shop</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/login">Login</a></li>
+        <li><a href="/register" style="color: white;">Register</a></li>
+
+        </ul>
+      <!-- Search Input (Live Search) -->
+<input type="text" oninput="performSearch(this.value)" placeholder="Search products...">
+
+<!-- Cart Icon with Badge -->
+<a href="/cart" style="position:relative;">
+    <i class="fa-solid fa-cart-shopping"></i>
+    <span id="cart-count" style="position:absolute; top:-10px; right:-10px; background:red; color:white; border-radius:50%; padding:2px 6px; font-size:10px;">0</span>
+</a>
+
+    </nav>
+
+</header>
+<div class="checkout-container">
+    <!-- Form Section -->
+    <div class="form-section">
+        <h2>Shipping Details</h2>
+        <form id="checkout-form">
+            <input type="text" placeholder="Full Name" required>
+            <input type="text" placeholder="Shipping Address" required>
+            <h3>Payment Method</h3>
+            <select id="payment-method" onchange="toggleCardDetails()">
+                <option value="cod">Cash on Delivery</option>
+                <option value="card">Credit/Debit Card</option>
+            </select>
+            <div id="card-details" style="display:none;">
+                <input type="text" placeholder="Card Number (e.g. 1234 5678)">
+                <input type="text" placeholder="MM/YY">
+                <input type="text" placeholder="CVV">
+            </div>
+            <button type="submit">Place Order</button>
+        </form>
+    </div>
+
+    <!-- Summary Section -->
+    <div class="summary-section">
+        <h2>Order Summary</h2>
+        <div id="checkout-items"></div>
+        <hr>
+        <h3 id="checkout-total">Total: $0</h3>
+    </div>
+</div>
+
+<script>
+    // Payment Toggle
+    function toggleCardDetails() {
+        document.getElementById('card-details').style.display = 
+            document.getElementById('payment-method').value === 'card' ? 'block' : 'none';
+    }
+
+    // Load Cart Data
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let itemsDiv = document.getElementById('checkout-items');
+    let total = 0;
+
+    cart.forEach(item => {
+        total += Number(item.price);
+        itemsDiv.innerHTML += `<div class="cart-item"><span>${item.name}</span><span>$${item.price}</span></div>`;
+    });
+    document.getElementById('checkout-total').innerText = "Total: $" + total.toFixed(2);
+
+    // Form Submission with Backend API Call
+    document.getElementById('checkout-form').onsubmit = async (e) => {
+        e.preventDefault();
+        
+        if (cart.length === 0) {
+            alert("Your cart is empty!");
+            return;
+        }
+
+        // Input field se customer ka naam lenge (First input full name wala hai)
+        let customer_name = document.querySelector('#checkout-form input[type="text"]').value || "Guest";
+        let total_price = total;
+
+        try {
+            const response = await fetch('/api/checkout', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ customer_name, total_price, items: cart })
+            });
+
+            const result = await response.json();
+            
+            if (response.ok) {
+                alert('Order Placed Successfully!');
+                localStorage.removeItem('cart'); // Clear cart
+                window.location.href = '/shop'; // Wapas shop page par bhej dein
+            } else {
+                alert(result.message || "Checkout failed");
+            }
+        } catch (err) {
+            console.error("Checkout Error:", err);
+            alert("An error occurred during checkout.");
+        }
+    };
+</script>
+
+<footer class="footer">
+    <!-- Newsletter Section -->
+    <div class="newsletter">
+        <div>
+            <h2>Join Paucek & Lage Alpha</h2>
+            <p>Get 15% off your first order, plus early access to new drops.</p>
+        </div>
+        <form id="subscribe-form" class="sub-form">
+    <!-- Yahan id="sub-email" add karna zaroori hai -->
+    <input type="email" id="sub-email" placeholder="Enter your email" required>
+    <button type="submit">Subscribe</button>
+</form>
+    </div>
+
+    <!-- Main Footer Links -->
+    <div class="footer-main">
+        <div class="brand">
+            <div class="logo">Stride</div>
+            <p>Elevate Your Style. From Head to Toe.</p>
+            <div class="socials">
+                <!-- Add your social icons here -->
+                <span>IG</span> <span>FB</span> <span>TT</span>
+            </div>
+        </div>
+
+        <div class="footer-links">
+            <h3>Shop</h3>
+            <a href="#">All Apparel</a><a href="#">Footwear</a><a href="#">Accessories</a>
+        </div>
+        <div class="footer-links">
+            <h3>Help</h3>
+            <a href="#">FAQ</a><a href="#">Shipping</a><a href="#">Contact Us</a>
+        </div>
+        <div class="footer-links">
+            <h3>About</h3>
+            <a href="#">Our Story</a><a href="#">Careers</a><a href="#">Store Locator</a>
+        </div>
+    </div>
+
+    <!-- Bottom Bar -->
+   <div class="footer-bottom">
+    <p>© 2026 CodeAlpha. All rights reserved.</p>
+    
+    <div class="payments">
+        <i class="fab fa-cc-visa" title="Visa"></i>
+        <i class="fab fa-cc-amex" title="Amex"></i>
+        <i class="fab fa-cc-apple-pay" title="Apple Pay"></i>
+    </div>
+</div>
+</footer>
+    <script src="/script.js"></script>
+</body>
+</html>
+
+ 
+    

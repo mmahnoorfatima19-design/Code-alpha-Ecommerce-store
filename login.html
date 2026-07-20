@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Paucek & Lage Alpha</title>
+    
+    <!-- CSS File Link -->
+    <link rel="stylesheet" href="/style.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Header / Navbar Section -->
+   <header class="about-page-header">
+    <nav class="main-bar">
+        <div class="logo">Paucek & Lage Alpha</div>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+             <li><a href="/shop">Shop</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/login">Login</a></li>
+        <li><a href="/register" style="color: white;">Register</a></li>
+        </ul>
+        
+<!-- Search Input -->
+<input type="text" oninput="performSearch(this.value)" placeholder="Search products...">
+
+<!-- Cart Icon with Badge -->
+<a href="/cart" style="position:relative;">
+    <i class="fa-solid fa-cart-shopping"></i>
+    <span id="cart-count" style="position:absolute; top:-10px; right:-10px; background:red; color:white; border-radius:50%; padding:2px 6px; font-size:10px;">0</span>
+</a>
+
+    </nav>
+</header>
+
+<div class="login-wrapper" style="padding: 50px; text-align: center;">
+    <h2>Login to Admin Panel</h2>
+    <form id="login-form" style="max-width: 400px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px;">
+        <input type="email" id="email" placeholder="Email" required style="padding: 10px;">
+        <input type="password" id="password" placeholder="Password" required style="padding: 10px;">
+        <button type="submit" style="padding: 10px; background: black; color: white; border: none; cursor: pointer;">Login</button>
+    </form>
+</div>
+
+<script>
+    // ** Fixed Login Event Listener **
+    document.getElementById('login-form').addEventListener('submit', async (e) => {
+        e.preventDefault(); // Page refresh hone se rokta hai
+
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+
+        try {
+            const response = await fetch('/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password })
+            });
+            
+            const result = await response.json();
+            alert(result.message);
+
+            // Agar login successful ho toh admin set karke redirect karein
+            if (result.message === "Login Successful!") {
+                localStorage.setItem('isAdminLoggedIn', 'true');
+                window.location.href = '/admin'; 
+            }
+        } catch (err) {
+            console.error("Login Error:", err);
+        }
+    });
+</script>
+
+
+
+<footer class="footer">
+    <!-- Newsletter Section -->
+    <div class="newsletter">
+        <div>
+            <h2>Join Paucek & Lage Alpha</h2>
+            <p>Get 15% off your first order, plus early access to new drops.</p>
+        </div>
+        <form id="subscribe-form" class="sub-form">
+    <!-- Yahan id="sub-email" add karna zaroori hai -->
+    <input type="email" id="sub-email" placeholder="Enter your email" required>
+    <button type="submit">Subscribe</button>
+</form>
+    </div>
+
+    <!-- Main Footer Links -->
+    <div class="footer-main">
+        <div class="brand">
+            <div class="logo">Stride</div>
+            <p>Elevate Your Style. From Head to Toe.</p>
+            <div class="socials">
+                <!-- Add your social icons here -->
+                <span>IG</span> <span>FB</span> <span>TT</span>
+            </div>
+        </div>
+
+        <div class="footer-links">
+            <h3>Shop</h3>
+            <a href="#">All Apparel</a><a href="#">Footwear</a><a href="#">Accessories</a>
+        </div>
+        <div class="footer-links">
+            <h3>Help</h3>
+            <a href="#">FAQ</a><a href="#">Shipping</a><a href="#">Contact Us</a>
+        </div>
+        <div class="footer-links">
+            <h3>About</h3>
+            <a href="#">Our Story</a><a href="#">Careers</a><a href="#">Store Locator</a>
+        </div>
+    </div>
+
+    <!-- Bottom Bar -->
+   <div class="footer-bottom">
+    <p>© 2026 CodeAlpha. All rights reserved.</p>
+    
+    <div class="payments">
+        <i class="fab fa-cc-visa" title="Visa"></i>
+        <i class="fab fa-cc-amex" title="Amex"></i>
+        <i class="fab fa-cc-apple-pay" title="Apple Pay"></i>
+    </div>
+</div>
+</footer>
+    <script src="/script.js"></script>
+</body>
+</html>

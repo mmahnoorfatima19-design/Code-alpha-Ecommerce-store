@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeAlpha Store</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<header class="hero-section">
+    <nav class="navbar">
+        <div class="logo">Paucek & Lage Alpha</div>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/shop">Shop</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/login">Login</a></li>
+        
+        <li><a href="/register" style="color: white;">Register</a></li>
+        </ul>
+         <!-- Search Input (Live Search) -->
+<input type="text" oninput="performSearch(this.value)" placeholder="Search products...">
+
+<!-- Cart Icon with Badge -->
+<a href="/cart" style="position:relative;">
+    <i class="fa-solid fa-cart-shopping"></i>
+    <span id="cart-count" style="position:absolute; top:-10px; right:-10px; background:red; color:white; border-radius:50%; padding:2px 6px; font-size:10px;">0</span>
+</a>
+
+    </nav>
+
+    
+    <div class="hero-content">
+        <p class="brand-name"> <span style="font-size: x-large;"> THE ULTIMATE FASHION DESTINATION</span></p>
+        <h2 class="sub-heading">SPECIAL OFFER</h2>
+        
+        <!-- Animation ke liye khali h1 -->
+        <h1 class="main-heading typewriter"></h1>
+        
+        <div class="discount-box"> <span style="margin-left: 40px;font-weight: 500;">DISCOUNT 55% OFF</span></div>
+        
+        <div class="hero-buttons">
+            <button class="btn-shop" onclick="window.location.href='/shop'">Shop Now</button>
+            <button class="btn-explore" onclick="window.location.href='/about'">Explore More</button>
+        </div>
+    </div>
+</header>
+<!-- Shop by Category Section -->
+    <section class="category-section">
+        <div class="category-header">
+            <div>
+                <h2>Shop by Category</h2>
+                <p>Find the perfect pair for every occasion</p>
+            </div>
+            <a href="/shop" class="view-all">View All →</a>
+        </div>
+
+        <div class="category-grid">
+            <!-- Running Card -->
+            <a href="/shop" class="category-card" style="background-image: url('/image/m2.jpg');">
+                <div class="card-content">
+                    <span class="product-count">48 products</span>
+                    <h3>Urban Layering</h3>
+                    <p>Shop Now →</p>
+                </div>
+            </a>
+
+            <!-- Sneakers Card -->
+            <a href="/shop" class="category-card" style="background-image: url('/image/m3.jpg');">
+                <div class="card-content">
+                    <span class="product-count">86 products</span>
+                    <h3>The Formal Edit</h3>
+                    <p>Shop Now →</p>
+                </div>
+            </a>
+
+            <!-- Basketball Card -->
+            <a href="/shop" class="category-card" style="background-image: url('/image/m4.jpg');">
+                <div class="card-content">
+                    <span class="product-count">32 products</span>
+                    <h3>Contemporary Chic</h3>
+                    <p>Shop Now →</p>
+                </div>
+            </a>
+
+         <a href="/shop" class="category-card" style="background-image: url('/image/m5.jpg');">
+                <div class="card-content">
+                    <span class="product-count">32 products</span>
+                    <h3>Tailored Fits</h3>
+                    <p>Shop Now →</p>
+                </div>
+            </a>
+        <a href="/shop" class="category-card" style="background-image: url('/image/m6.jpg');">
+                <div class="card-content">
+                    <span class="product-count">32 products</span>
+                    <h3>Smart Casuals</h3>
+                    <p>Shop Now →</p>
+                </div>
+            </a>
+         <a href="/shop" class="category-card" style="background-image: url('/image/m7.jpg');">
+                <div class="card-content">
+                    <span class="product-count">32 products</span>
+                    <h3>Effortless Style</h3>
+                    <p>Shop Now →</p>
+                </div>
+            </a>
+        </div>
+    </section>
+    <!-- Featured Collection Section -->
+<section class="featured-section">
+    <div class="category-header">
+        <div>
+            <h2>Featured Collection</h2>
+            <p>Our most popular styles handpicked for you</p>
+        </div>
+        <a href="/shop" class="view-all">View All Featured ></a>
+    </div>
+
+    <div class="featured-grid">
+        <!-- Card 1 -->
+        <a href="/shop" class="featured-card">
+            <img src="/image/m3.jpg" alt="Shoe">
+            <div class="product-info">
+                <span class="category">The Formal Edit</span> <span class="rating">★ 4.9</span>
+                <h3>Midnight Tuxedo</h3>
+                <p class="price">$179 <del>$219</del></p>
+            </div>
+        </a>
+        <!-- Card 2 -->
+        <a href="/shop" class="featured-card">
+            <img src="/image/m8.jpg" alt="Shoe">
+            <div class="product-info">
+                <span class="category">Contemporary Chic</span> <span class="rating">★ 4.8</span>
+                <h3>Classic Business</h3>
+                <p class="price">$129</p>
+            </div>
+        </a>
+        <!-- Card 3 -->
+        <a href="/shop" class="featured-card">
+            <img src="/image/m9.jpg" alt="Shoe">
+            <div class="product-info">
+                <span class="category">Smart Casuals</span> <span class="rating">★ 4.7</span>
+                <h3>Urban Cardigan</h3>
+                <p class="price">$199</p>
+            </div>
+        </a>
+        <!-- Card 4 -->
+        <a href="/shop" class="featured-card">
+            <img src="/image/m10.jpg" alt="Shoe">
+            <div class="product-info">
+                <span class="category">Summer Breeze</span> <span class="rating">★ 4.8</span>
+                <h3>Minimalist Set</h3>
+                <p class="price">$189 <del>$229</del></p>
+            </div>
+        </a>
+    </div>
+</section>
+<!-- Testimonials & Stats Section -->
+<section class="testimonial-stats-wrapper">
+    
+    <!-- Testimonials -->
+    <div class="testi-grid">
+        <!-- Card 1 -->
+        <div class="testi-card">
+            <div class="stars">★★★★★</div>
+            <p>"I've tried many brands, but the performance and comfort of Alpha footwear are unmatched. It’s exactly what I needed for my long-distance runs."</p>
+            <div class="user-info">
+                <img src="/image/t1.jpg" alt="User" class="user-img">
+                <div>
+                    <h4>Marcus Chen</h4>
+                    <span class="user-role">Marathon Runner</span>
+                </div>
+            </div>
+        </div>
+        <!-- Card 2 -->
+        <div class="testi-card">
+            <div class="stars">★★★★★</div>
+            <p>"The quality of the fabrics at Alpha is incredible. Their latest collection of dresses is stylish, comfortable, and perfect for any occasion."</p>
+            <div class="user-info">
+                <img src="/image/t2.jpg" alt="User" class="user-img">
+                <div>
+                    <h4>Emily Rodriguez</h4>
+                    <span class="user-role">For Dresses</span>
+                </div>
+            </div>
+        </div>
+        <!-- Card 3 -->
+        <div class="testi-card">
+            <div class="stars">★★★★★</div>
+            <p>"From accessories to clothing, everything I've purchased from Alpha has been top-notch. It has easily become my go-to brand for a modern wardrobe."</p>
+            <div class="user-info">
+                <img src="/image/t3.jpg" alt="User" class="user-img">
+                <div>
+                    <h4>David Kim</h4>
+                    <span class="user-role">For General Products</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stats Section (Directly below testimonials) -->
+    <div class="stats-section">
+        <div class="stat-item">
+            <h2>50K+</h2>
+            <p>Happy Customers</p>
+        </div>
+        <div class="stat-item">
+            <h2>4.9/5</h2>
+            <p>Average Rating</p>
+        </div>
+        <div class="stat-item">
+            <h2>15K+</h2>
+            <p>5-Star Reviews</p>
+        </div>
+        <div class="stat-item">
+            <h2>98%</h2>
+            <p>Would Recommend</p>
+        </div>
+    </div>
+</section>
+<footer class="footer">
+    <!-- Newsletter Section -->
+    <div class="newsletter">
+        <div>
+            <h2>Join Paucek & Lage Alpha</h2>
+            <p>Get 15% off your first order, plus early access to new drops.</p>
+        </div>
+       <form id="subscribe-form" class="sub-form">
+    <input type="email" id="sub-email" placeholder="Enter your email" required>
+    <button type="submit">Subscribe</button>
+</form>
+    </div>
+
+    <!-- Main Footer Links -->
+    <div class="footer-main">
+        <div class="brand">
+            <div class="logo">Stride</div>
+            <p>Elevate Your Style. From Head to Toe.</p>
+            <div class="socials">
+                <!-- Add your social icons here -->
+                <span>IG</span> <span>FB</span> <span>TT</span>
+            </div>
+        </div>
+
+        <div class="footer-links">
+            <h3>Shop</h3>
+            <a href="#">All Apparel</a><a href="#">Footwear</a><a href="#">Accessories</a>
+        </div>
+        <div class="footer-links">
+            <h3>Help</h3>
+            <a href="#">FAQ</a><a href="#">Shipping</a><a href="#">Contact Us</a>
+        </div>
+        <div class="footer-links">
+            <h3>About</h3>
+            <a href="#">Our Story</a><a href="#">Careers</a><a href="#">Store Locator</a>
+        </div>
+    </div>
+
+    <!-- Bottom Bar -->
+   <div class="footer-bottom">
+    <p>© 2026 CodeAlpha. All rights reserved.</p>
+    
+    <div class="payments">
+        <i class="fab fa-cc-visa" title="Visa"></i>
+        <i class="fab fa-cc-amex" title="Amex"></i>
+        <i class="fab fa-cc-apple-pay" title="Apple Pay"></i>
+    </div>
+</div>
+</footer>
+    <script src="/script.js"></script>
+</body>
+</html>

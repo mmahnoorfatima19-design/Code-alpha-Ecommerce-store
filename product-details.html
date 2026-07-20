@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Paucek & Lage Alpha</title>
+    
+    <!-- CSS File Link -->
+    <link rel="stylesheet" href="/style.css">
+    
+    <!-- Font Awesome (Icons ke liye - Yeh zaroori hai!) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Header / Navbar Section -->
+   <header class="about-page-header">
+    <nav class="main-bar">
+        <div class="logo">Paucek & Lage Alpha</div>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+             <li><a href="/shop">Shop</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/login">Login</a></li>
+        <li><a href="/register" style="color: white;">Register</a></li>
+
+        </ul>
+      <!-- Search Input (Live Search) -->
+<input type="text" oninput="performSearch(this.value)" placeholder="Search products...">
+
+<!-- Cart Icon with Badge -->
+<a href="/cart" style="position:relative;">
+    <i class="fa-solid fa-cart-shopping"></i>
+    <span id="cart-count" style="position:absolute; top:-10px; right:-10px; background:red; color:white; border-radius:50%; padding:2px 6px; font-size:10px;">0</span>
+</a>
+
+    </nav>
+
+</header>
+<div id="details-container" class="details-container">
+        <!-- JS yahan data load karega -->
+    </div>
+
+    <script>
+        // LocalStorage se product data nikalna
+       ;
+       const product = JSON.parse(localStorage.getItem('selectedProduct'));
+const container = document.getElementById('details-container');
+if (product) {
+    container.innerHTML = `
+        <div style="text-align: left; max-width: 600px; margin: auto;">
+            <img src="${product.img}" alt="${product.name}" style="width:100%; border-radius: 10px;">
+            <h1 style="margin: 20px 0;">${product.name}</h1>
+            <p style="font-size: 18px; color: #555;">Category: <strong>${product.category}</strong></p>
+            <p style="font-size: 24px; color: #000; font-weight: bold;">Price: $${product.price}</p>
+            <div style="margin: 30px 0; padding: 25px; background: #fdfdfd; border: 1px solid #eee; border-radius: 8px;">
+    <h3 style="margin-top: 0; color: #222; border-bottom: 2px solid #000; display: inline-block; padding-bottom: 5px;">
+        Why Choose Our Products?
+    </h3>
+    <p style="color: #555; line-height: 1.8; font-size: 16px;">
+        At <strong>Paucek & Lage Alpha</strong>, we believe that true style lies in the details. 
+        Each product in our collection is crafted with a commitment to excellence, blending modern 
+        aesthetics with unmatched durability. We source only the finest materials to ensure that 
+        every item not only looks sophisticated but stands the test of time. 
+        <br><br>
+        Whether you are dressing for a professional setting or a casual outing, our designs are 
+        engineered to provide maximum comfort without compromising on elegance. By choosing us, 
+        you are not just buying a product; you are investing in a standard of quality that 
+        defines our brand. Experience the perfect harmony of functionality and fashion today.
+    </p>
+</div>
+            <div style="margin-top: 30px;">
+                <button onclick="addToCart('${product.name}', ${product.price}, '${product.img}')" 
+                    style="padding: 12px 30px; background: black; color: white; border: none; cursor: pointer; font-size: 16px;">
+                    Add to Cart
+                </button>
+                <button onclick="window.history.back()" 
+                    style="padding: 12px 30px; background: white; color: black; border: 1px solid black; cursor: pointer; font-size: 16px; margin-left: 10px;">
+                    Back to Shop
+                </button>
+            </div>
+        </div>
+    `;
+}
+ </script>
+ <!-- footer -->
+ <footer class="footer">
+    <!-- Newsletter Section -->
+    <div class="newsletter">
+        <div>
+            <h2>Join Paucek & Lage Alpha</h2>
+            <p>Get 15% off your first order, plus early access to new drops.</p>
+        </div>
+        <form id="subscribe-form" class="sub-form">
+    <!-- Yahan id="sub-email" add karna zaroori hai -->
+    <input type="email" id="sub-email" placeholder="Enter your email" required>
+    <button type="submit">Subscribe</button>
+</form>
+    </div>
+
+    <!-- Main Footer Links -->
+    <div class="footer-main">
+        <div class="brand">
+            <div class="logo">Stride</div>
+            <p>Elevate Your Style. From Head to Toe.</p>
+            <div class="socials">
+                <!-- Add your social icons here -->
+                <span>IG</span> <span>FB</span> <span>TT</span>
+            </div>
+        </div>
+
+        <div class="footer-links">
+            <h3>Shop</h3>
+            <a href="#">All Apparel</a><a href="#">Footwear</a><a href="#">Accessories</a>
+        </div>
+        <div class="footer-links">
+            <h3>Help</h3>
+            <a href="#">FAQ</a><a href="#">Shipping</a><a href="#">Contact Us</a>
+        </div>
+        <div class="footer-links">
+            <h3>About</h3>
+            <a href="#">Our Story</a><a href="#">Careers</a><a href="#">Store Locator</a>
+        </div>
+    </div>
+
+    <!-- Bottom Bar -->
+   <div class="footer-bottom">
+    <p>© 2026 CodeAlpha. All rights reserved.</p>
+    
+    <div class="payments">
+        <i class="fab fa-cc-visa" title="Visa"></i>
+        <i class="fab fa-cc-amex" title="Amex"></i>
+        <i class="fab fa-cc-apple-pay" title="Apple Pay"></i>
+    </div>
+</div>
+</footer>
+    <script src="/script.js"></script>
+        </body>
+</html>
